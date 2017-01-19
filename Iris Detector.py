@@ -57,6 +57,8 @@ def learn(num_neighbors=1, should_i_print=True):
     class WyndhammerKNN:
         target = []
         data = []
+        mins = []
+        maxes = []
 
         def getDist(self, data1, data2):
             sum_of_squares = 0
@@ -69,9 +71,28 @@ def learn(num_neighbors=1, should_i_print=True):
         def fit(self, t_data, t_targets):
             self.target = t_targets
             self.data = t_data
+            # normalize
+            for dataType in range(len(t_data[0])):
+                self.mins.append(t_data[0][dataType])
+                self.maxes.append(t_data[0][dataType])
+                for p in range(len(t_data)):
+                    if t_data[p][dataType] < self.mins[dataType]:
+                        self.mins[dataType] = t_data[p][dataType]
+                    if t_data[p][dataType] > self.maxes[dataType]:
+                        self.maxes[dataType] = t_data[p][dataType]
+            for p in range(len(t_data)):
+                for set in range(len(t_data[p])):
+                    old = t_data[p][set]
+                    t_data[p][set] = (old - self.mins[set]) / (self.maxes[set] - self.mins[set])
 
         def predict(self, test_data, k = 1):
             predictions = []
+
+            # normalize test data
+            for p in range(len(test_data)):
+                for set in range(len(test_data[p])):
+                    old = test_data[p][set]
+                    test_data[p][set] = (old - self.mins[set]) / (self.maxes[set] - self.mins[set])
 
             # where the magic happens
             for i in range(len(test_data)):

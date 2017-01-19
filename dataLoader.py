@@ -1,4 +1,7 @@
+# Created by Matt Wyndham
 # Loads the iris data from a text file
+
+
 def load():
     file = open('iris.data')
     data_target_text = file.readlines()
