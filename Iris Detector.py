@@ -154,7 +154,7 @@ if __name__ == '__main__':
     #iris = datasets.load_iris()
 
     # try different numbers of neighbors
-    for i in range(1,7):
+    for i in range(1,99):
         print("Neighbors:", i)
         average = 0
         # take the average of 20 tries
