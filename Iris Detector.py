@@ -88,7 +88,7 @@ def learn(num_neighbors=1, should_i_print=True):
         def predict(self, test_data, k = 1):
             predictions = []
 
-            # normalize test data
+            # normalize test data (doesn't handle outliers in the test data very well though...)
             for p in range(len(test_data)):
                 for set in range(len(test_data[p])):
                     old = test_data[p][set]
