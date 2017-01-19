@@ -3,14 +3,7 @@ from random import shuffle
 import dataLoader
 import math
 
-if __name__ == '__main__':
-    # import the iris data
-
-    #from sklearn import datasets
-    #iris = datasets.load_iris()
-
-    # load from a file
-
+def learn(num_neighbors = 1, should_i_print = True):
     class irisHolder:
         data = []
         target = []
@@ -116,7 +109,7 @@ if __name__ == '__main__':
     GLADos = WyndhammerKNN()
 
     GLADos.fit(training_data, training_target)
-    predicted_targets = GLADos.predict(test_data)
+    predicted_targets = GLADos.predict(test_data, num_neighbors)
 
     # tell me your ideas
     correct_predictions = 0
@@ -126,5 +119,23 @@ if __name__ == '__main__':
 
     # I check your accuracy
     accuracy = (correct_predictions / len(test_target)) * 100
+    if should_i_print:
+        print(accuracy, "% accuracy")
 
-    print(accuracy, "% accuracy")
+    return accuracy
+
+if __name__ == '__main__':
+    # import the iris data
+
+    #from sklearn import datasets
+    #iris = datasets.load_iris()
+
+    # try different numbers of neighbors
+    for i in range(1,7):
+        print("Neighbors:", i)
+        average = 0
+        # take the average of 20 tries
+        for _ in range(20):
+            average += learn(i, False)
+        average /= 20
+        print("average:", average, "%")
