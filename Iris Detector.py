@@ -3,24 +3,25 @@ from random import shuffle
 import dataLoader
 import math
 
-def learn(num_neighbors = 1, should_i_print = True):
-    class irisHolder:
+
+def learn(num_neighbors=1, should_i_print=True):
+    class IrisHolder:
         data = []
         target = []
 
-    iris = irisHolder()
+    iris = IrisHolder()
 
     iris.data, iris.target = dataLoader.load()
 
     # randomize order
     shuffled_data = []
     shuffled_target = []
-    index_shuffler = [i for i in range(len(iris.data))]
+    index_shuffler = [n for n in range(len(iris.data))]
     shuffle(index_shuffler)
 
-    for i in index_shuffler:
-        shuffled_data.append(iris.data[i])
-        shuffled_target.append(iris.target[i])
+    for index in index_shuffler:
+        shuffled_data.append(iris.data[index])
+        shuffled_target.append(iris.target[index])
 
     # split the data
     training_data = []
@@ -29,14 +30,14 @@ def learn(num_neighbors = 1, should_i_print = True):
     test_data = []
     test_target = []
 
-    for i in range(len(iris.data)):
-        if i < (len(iris.data) * .7):
-            training_data.append(shuffled_data[i])
-            training_target.append(shuffled_target[i])
+    for splitter in range(len(iris.data)):
+        if splitter < (len(iris.data) * .7):
+            training_data.append(shuffled_data[splitter])
+            training_target.append(shuffled_target[splitter])
 
-        if i >= (len(iris.data) * .7):
-            test_data.append(shuffled_data[i])
-            test_target.append(shuffled_target[i])
+        if splitter >= (len(iris.data) * .7):
+            test_data.append(shuffled_data[splitter])
+            test_target.append(shuffled_target[splitter])
 
     # the black box
     class HardCoded:
@@ -60,6 +61,7 @@ def learn(num_neighbors = 1, should_i_print = True):
         def getDist(self, data1, data2):
             sum_of_squares = 0
             for i in range(len(data1)):
+
                 sum_of_squares += pow(data1[i] - data2[i], 2)
             distance = math.sqrt(sum_of_squares)
             return distance
