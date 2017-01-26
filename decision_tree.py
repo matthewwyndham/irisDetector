@@ -15,7 +15,7 @@ class Node(object):
         else:
             return False
 
-class DecisionTree:
+class DecisionTree(object):
     root = Node()
 
     def fit(self, training_data, training_targets):
