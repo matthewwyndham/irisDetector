@@ -1,28 +1,28 @@
 # Created by Matt Wyndham
 from random import shuffle
 import iris_loader
-import HardCoded
+import lenses_loader
 import math
 
 
-def learn(num_neighbors=1, should_i_print=True):
+def learn(should_i_print=True):
     class dataSet:
         data = []
         target = []
 
-    iris = dataSet()
-
-    iris.data, iris.target = iris_loader.load()
+    dataSet1 = dataSet()
+#    dataSet1.data, dataSet1.target = iris_loader.load()
+    dataSet1.data, dataSet1.target = lenses_loader.load()
 
     # randomize order
     shuffled_data = []
     shuffled_target = []
-    index_shuffler = [n for n in range(len(iris.data))]
+    index_shuffler = [n for n in range(len(dataSet1.data))]
     shuffle(index_shuffler)
 
     for index in index_shuffler:
-        shuffled_data.append(iris.data[index])
-        shuffled_target.append(iris.target[index])
+        shuffled_data.append(dataSet1.data[index])
+        shuffled_target.append(dataSet1.target[index])
 
     # split the data
     training_data = []
@@ -31,12 +31,12 @@ def learn(num_neighbors=1, should_i_print=True):
     test_data = []
     test_target = []
 
-    for splitter in range(len(iris.data)):
-        if splitter < (len(iris.data) * .7):
+    for splitter in range(len(dataSet1.data)):
+        if splitter < (len(dataSet1.data) * .7):
             training_data.append(shuffled_data[splitter])
             training_target.append(shuffled_target[splitter])
 
-        if splitter >= (len(iris.data) * .7):
+        if splitter >= (len(dataSet1.data) * .7):
             test_data.append(shuffled_data[splitter])
             test_target.append(shuffled_target[splitter])
 
@@ -134,6 +134,12 @@ def learn(num_neighbors=1, should_i_print=True):
             def add_child(self, obj):
                 self.children.append(obj)
 
+            def isLeaf(self):
+                if len(self.children) == 0:
+                    return True
+                else:
+                    return False
+
         def fit(self, t_data, t_target):
             pass
 
@@ -161,13 +167,9 @@ def learn(num_neighbors=1, should_i_print=True):
     return accuracy
 
 if __name__ == '__main__':
-
-    # try different numbers of neighbors
-    for i in range(1,99):
-        print("Neighbors:", i)
-        average = 0
-        # take the average of 20 tries
-        for _ in range(20):
-            average += learn()
-        average /= 20
-        print("average:", average, "%")
+    average = 0
+    # take the average of 20 tries
+    for _ in range(20):
+        average += learn(False)
+    average /= 20
+    print("average:", average, "%")
