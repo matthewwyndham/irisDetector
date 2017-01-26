@@ -148,7 +148,7 @@ def learn(should_i_print=True):
                 if self.data[row][num_values] != self.data[row + 1][num_values]:
                     sameTarget = False
             if sameTarget == True:
-                isLeaf = True
+                self.isLeaf = True
                 return
             else:
                 # make split children for every attribute
