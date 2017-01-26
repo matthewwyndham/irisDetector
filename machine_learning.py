@@ -315,8 +315,8 @@ def learn(should_i_print=True):
     # I check your accuracy
     accuracy = (correct_predictions / len(test_target)) * 100
     if should_i_print:
-        print(predicted_targets)
-        print(test_target)
+        print('Guess:', predicted_targets)
+        print('Actual:', test_target)
         print(accuracy, "% accuracy")
 
     return accuracy
