@@ -135,20 +135,50 @@ def learn(should_i_print=True):
 
     class DecisionTree:
         def __init__(self):
-            self.data = []
-            self.numberOfTargets = None
-            self.children = []
-            self.attribute = None
-            self.isLeaf = None
-            self.entropy = None
+            self.target = None # used by the prediction algorithm
+            self.children = [] # predict
+            self.attribute = None # predict
+            self.isLeaf = None # predict
+
+            self.data = []  # used by the fit algorithm
+            self.numberOfTargets = None  # fit
+            self.entropy = None # fit
+            self.descendantNumber = 0 # fit
+
+        def display(self):
+            print('Attribute:', self.attribute, 'Target:', self.target)
+            for x in self.children:
+                for m in range(self.descendantNumber):
+                    print('| ', end='')
+                x.display()
+
+        def find(self, target):
+            if self.isLeaf == True:
+                return self.target
+            else:
+                for child in self.children:
+                    if target[self.attribute] == child.data[0][self.attribute]:
+                        return child.find(target)
+
 
         def fit(self, num_values):
+            # in case of error
+            if len(self.data) == 0:
+                self.target = 1
+                self.isLeaf = True
+                return
+
             sameTarget = True
             for row in range(len(self.data) - 1):
                 if self.data[row][num_values] != self.data[row + 1][num_values]:
                     sameTarget = False
             if sameTarget == True:
                 self.isLeaf = True
+                self.target = self.data[0][num_values]
+                return
+            elif self.descendantNumber > 30: # length cap
+                self.isLeaf = True
+                self.target = self.data[0][num_values]
                 return
             else:
                 # make split children for every attribute
@@ -174,6 +204,8 @@ def learn(should_i_print=True):
                                 currentChild.data.append(self.data[i])
                         FakeChildren.append(currentChild)
                     # find entropy of each
+                    numTargetsPerChild = []
+                    entropyPerChild = []
                     for c in FakeChildren:
                         targets = [0 for x in range(self.numberOfTargets)]
                         for x in range(len(c.data)):
@@ -181,14 +213,53 @@ def learn(should_i_print=True):
                         total = 0
                         for i in targets:
                             total += i
-
-                        # perhaps this has gotten too complicated...
-
+                        numTargetsPerChild.append(total)
+                        theEntropy = 0
+                        for everyN in targets:
+                            theEntropy += calc_entropy(everyN/total)
+                        entropyPerChild.append(theEntropy)
+                    weightedEntropy = 0
+                    totalTargets = 0
+                    for target in numTargetsPerChild:
+                        totalTargets += target
+                    for item in range(len(entropyPerChild)):
+                        weightedEntropy += (entropyPerChild[item]*(numTargetsPerChild[item]/totalTargets))
+                    entropyValues.append(weightedEntropy)
                 # pick best option
+                bestAttribute = 0
+                for i in range(len(entropyValues)):
+                    if entropyValues[i] < entropyValues[bestAttribute]:
+                        bestAttribute = i
+
                 # set that to this node's attribute
+                self.attribute = bestAttribute
+
                 # split data by that attribute
+                possibleValues = []
+                for i in range(len(self.data)):
+                    if len(possibleValues) == 0:
+                        possibleValues.append(self.data[i][self.attribute])
+                    else:
+                        alreadyThere = False
+                        for j in range(len(possibleValues)):
+                            if self.data[i][self.attribute] == possibleValues[j]:
+                                alreadyThere = True
+                        if alreadyThere != True:
+                            possibleValues.append(self.data[i][self.attribute])
+
                 # pass portion of data on to each child
+                for v in possibleValues:
+                    currentChild = DecisionTree()
+                    for i in range(len(self.data)):
+                        if self.data[i][self.attribute] == v:
+                            currentChild.data.append(self.data[i])
+                        currentChild.descendantNumber = self.descendantNumber + 1
+                        currentChild.numberOfTargets = self.numberOfTargets
+                    self.children.append(currentChild)
+
                 # make each child fit themselves
+                for c in self.children:
+                    c.fit(num_values)
                 return
 
     class ID3Tree:
@@ -222,7 +293,11 @@ def learn(should_i_print=True):
         def predict(self, targets):
             predictions = []
             for item in range(len(targets)):
-                predictions.append(1)
+                # follow the tree to a leaf node recursively
+                predictions.append(self.root.find(targets[item]))
+
+            self.root.display()
+
             return predictions
 
     # choose your algorithm here
