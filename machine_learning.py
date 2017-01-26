@@ -125,26 +125,104 @@ def learn(should_i_print=True):
 
             return predictions
 
+    # This is where the ID3 stuff begins
+
+    def calc_entropy(p):
+        if p != 0:
+            return -p * math.log(p, 2)
+        else:
+            return 0
+
+    class DecisionTree:
+        def __init__(self):
+            self.data = []
+            self.numberOfTargets = None
+            self.children = []
+            self.attribute = None
+            self.isLeaf = None
+            self.entropy = None
+
+        def fit(self, num_values):
+            sameTarget = True
+            for row in range(len(self.data) - 1):
+                if self.data[row][num_values] != self.data[row + 1][num_values]:
+                    sameTarget = False
+            if sameTarget == True:
+                isLeaf = True
+                return
+            else:
+                # make split children for every attribute
+                entropyValues = []
+                for current in range(len(self.data[0]) - 1):
+                    # every possible value of the current attribute according to the training set
+                    FakeChildren = []
+                    possibleValues = []
+                    for i in range(len(self.data)):
+                        if len(possibleValues) == 0:
+                            possibleValues.append(self.data[i][current])
+                        else:
+                            alreadyThere = False
+                            for j in range(len(possibleValues)):
+                                if self.data[i][current] == possibleValues[j]:
+                                    alreadyThere = True
+                            if alreadyThere != True:
+                                possibleValues.append(self.data[i][current])
+                    for v in possibleValues:
+                        currentChild = DecisionTree()
+                        for i in range(len(self.data)):
+                            if self.data[i][current] == v:
+                                currentChild.data.append(self.data[i])
+                        FakeChildren.append(currentChild)
+                    # find entropy of each
+                    for c in FakeChildren:
+                        targets = [0 for x in range(self.numberOfTargets)]
+                        for x in range(len(c.data)):
+                            targets[c.data[x][len(c.data[x]) - 1] - 1] += 1
+                        total = 0
+                        for i in targets:
+                            total += i
+
+                        # perhaps this has gotten too complicated...
+
+                # pick best option
+                # set that to this node's attribute
+                # split data by that attribute
+                # pass portion of data on to each child
+                # make each child fit themselves
+                return
+
     class ID3Tree:
-        class Node(object):
-            def __init__(self, data):
-                self.data = data
-                self.children = []
-
-            def add_child(self, obj):
-                self.children.append(obj)
-
-            def isLeaf(self):
-                if len(self.children) == 0:
-                    return True
-                else:
-                    return False
+        num_values = 0
+        # contains all the test data
+        treeMakingData = []
+        root = DecisionTree()
 
         def fit(self, t_data, t_target):
-            pass
+            for value in t_data[0]:
+                self.num_values += 1
+            for row in range(len(t_data)):
+                current = t_data[row]
+                current.append(t_target[row])
+                self.treeMakingData.append(current)
+            self.root.data = self.treeMakingData
+            differentTargets = []
+            for row in range(len(t_target)):
+                if len(differentTargets) == 0:
+                    differentTargets.append(t_target[row])
+                else:
+                    found = False
+                    for t in range(len(differentTargets)):
+                        if t_target[row] == differentTargets[t]:
+                            found = True
+                    if found == False:
+                        differentTargets.append(t_target[row])
+            self.root.numberOfTargets = len(differentTargets)
+            self.root.fit(self.num_values)
 
         def predict(self, targets):
             predictions = []
+            for item in range(len(targets)):
+                predictions.append(1)
             return predictions
 
     # choose your algorithm here
@@ -162,14 +240,14 @@ def learn(should_i_print=True):
     # I check your accuracy
     accuracy = (correct_predictions / len(test_target)) * 100
     if should_i_print:
+        print(predicted_targets)
+        print(test_target)
         print(accuracy, "% accuracy")
 
     return accuracy
 
 if __name__ == '__main__':
-    average = 0
-    # take the average of 20 tries
-    for _ in range(20):
-        average += learn(False)
-    average /= 20
-    print("average:", average, "%")
+    for i in range(15):
+        print("Attempt: ", i,)
+        learn()
+        print()
