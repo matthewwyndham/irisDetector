@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5ff8fb5-0b72-409c-9dec-b3e66209b204" name="Default" comment="finished the ID3 algorithm!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../machine_learning/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../machine_learning/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/.idea/modules.xml" afterPath="$PROJECT_DIR$/../machine_learning/.idea/modules.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../machine_learning/.idea/week01.iml" afterPath="$PROJECT_DIR$/../machine_learning/.idea/machine_learning.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/iris_loader.py" afterPath="$PROJECT_DIR$/../machine_learning/iris_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/lenses_loader.py" afterPath="$PROJECT_DIR$/../machine_learning/lenses_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/machine_learning.py" afterPath="$PROJECT_DIR$/../machine_learning/machine_learning.py" />
+    <list default="true" id="e5ff8fb5-0b72-409c-9dec-b3e66209b204" name="Default" comment="setup a different filename">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../machine_learning/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -615,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485422600560</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="finished the ID3 algorithm!">
+      <created>1485921840762</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1485921840762</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -664,7 +665,8 @@
     <MESSAGE value="imported lenses" />
     <MESSAGE value="got pretty far on the id3 stuff, maybe painted myself in a corner" />
     <MESSAGE value="finished the ID3 algorithm!" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished the ID3 algorithm!" />
+    <MESSAGE value="setup a different filename" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup a different filename" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
