@@ -3,7 +3,7 @@
 
 
 def load():
-    file = open('iris.data')
+    file = open('iris/iris.data')
     data_target_text = file.readlines()
     loader_data = []
     loader_target = []

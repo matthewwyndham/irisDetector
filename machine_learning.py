@@ -2,17 +2,70 @@
 from random import shuffle
 import iris_loader
 import lenses_loader
+import vote_loader
 import math
 
+# only use for numeric data
+def nominalize(data):
+    # this will turn numeric data into nominal data
+    # without reordering the data.
+    for attribute in range(len(data[0])):
+        # these should change to the actual max/min
+        minimum_value = data[0][attribute]
+        maximum_value = data[0][attribute]
+        for row in data:
+            if row[attribute] < minimum_value:
+                minimum_value = row[attribute]
+            if row[attribute] > maximum_value:
+                maximum_value = row[attribute]
+        # this only splits the data into three different groups
+        # adding more groups should be easy
+        split_value = (maximum_value + minimum_value) / 3
+        for row in data:
+            if row[attribute] < split_value:
+                row[attribute] = 1
+            elif row[attribute] < (split_value * 2):
+                row[attribute] = 2
+            else:
+                row[attribute] = 3
+    return data
 
+# this is where the actual machine learning algorithms are stored
 def learn(should_i_print=True):
     class dataSet:
         data = []
         target = []
 
     dataSet1 = dataSet()
-#    dataSet1.data, dataSet1.target = iris_loader.load()
-    dataSet1.data, dataSet1.target = lenses_loader.load()
+
+    #########################################################
+    ###   This is where you pick the data you will load   ###
+    #########################################################
+
+    ### Nominal Datasets ###
+
+
+    ## Votes ##
+    #dataSet1.data, dataSet1.target = vote_loader.load() # nominal
+
+    ## Lenses ##
+    #dataSet1.data, dataSet1.target = lenses_loader.load() # nominal
+
+
+    ### Numeric Datasets ###
+
+
+    ## Iris ##
+    dataSet1.data, dataSet1.target = iris_loader.load() # numeric
+
+
+    ### Split numeric datasets into nominal datasets ###
+    ### Useful for the ID3 algorithm ###
+    dataSet1.data = nominalize(dataSet1.data)
+
+    ###########################################
+    ###   End the data picking section   ###
+    ###########################################
 
     # randomize order
     shuffled_data = []
@@ -125,14 +178,18 @@ def learn(should_i_print=True):
 
             return predictions
 
-    # This is where the ID3 stuff begins
+    ######################################
+    # This is where the ID3 stuff begins #
+    ######################################
 
+    # determines the entropy of one item. Use this multiple times per grouping
     def calc_entropy(p):
         if p != 0:
             return -p * math.log(p, 2)
         else:
             return 0
 
+    # the class that can call itself
     class DecisionTree:
         def __init__(self):
             self.target = None # used by the prediction algorithm
@@ -176,7 +233,7 @@ def learn(should_i_print=True):
                 self.isLeaf = True
                 self.target = self.data[0][num_values]
                 return
-            elif self.descendantNumber > 30: # length cap
+            elif self.descendantNumber > 10: # length cap
                 self.isLeaf = True
                 self.target = self.data[0][num_values]
                 return
@@ -262,6 +319,7 @@ def learn(should_i_print=True):
                     c.fit(num_values)
                 return
 
+    # initializes and wraps the actual nodes
     class ID3Tree:
         num_values = 0
         # contains all the test data
@@ -300,13 +358,37 @@ def learn(should_i_print=True):
 
             return predictions
 
-    # choose your algorithm here
-    GLADos = ID3Tree()
+    ####################
+    # End of ID3 Stuff #
+    ####################
 
+    # Naive Bayes
+    class NaiveBayes:
+        def fit(self, train_data, train_targets):
+            # sum up everything
+            # divide by the totals
+            pass
+        def predict(self, test_data):
+            predictions = []
+            # find the probability of each attribute
+            # add it all up
+            # find the highest of the p(attributes|each target value)
+            # return that target value
+            return predictions
+
+    ##############################
+    # choose your algorithm here #
+    ##############################
+    #GLADos = HardCoded()
+    #GLADos = WyndhammerKNN()
+    GLADos = ID3Tree()
+    #GLADos = NaiveBayes() # DOES NOTHING #
+
+    ## now the program checks things for you ##
     GLADos.fit(training_data, training_target)
     predicted_targets = GLADos.predict(test_data)
 
-    # tell me your ideas
+    # tell me your predictions!
     correct_predictions = 0
     for i in range(len(predicted_targets)):
         if predicted_targets[i] == test_target[i]:
@@ -322,7 +404,12 @@ def learn(should_i_print=True):
     return accuracy
 
 if __name__ == '__main__':
+    average_accuracy = 0
+    attempts = 0
     for i in range(15):
         print("Attempt: ", i,)
-        learn()
+        average_accuracy += learn()
+        attempts += 1
         print()
+    print()
+    print(average_accuracy / attempts)

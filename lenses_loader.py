@@ -1,3 +1,5 @@
+# created by Matt Wyndham
+
 def load():
     file = open('lenses/lenses.data')
     data_target_text = file.readlines()
