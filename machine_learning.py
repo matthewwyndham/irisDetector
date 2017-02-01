@@ -46,7 +46,7 @@ def learn(should_i_print=True):
 
 
     ## Votes ##
-    #dataSet1.data, dataSet1.target = vote_loader.load() # nominal
+    dataSet1.data, dataSet1.target = vote_loader.load() # nominal
 
     ## Lenses ##
     #dataSet1.data, dataSet1.target = lenses_loader.load() # nominal
@@ -56,12 +56,12 @@ def learn(should_i_print=True):
 
 
     ## Iris ##
-    dataSet1.data, dataSet1.target = iris_loader.load() # numeric
+    #dataSet1.data, dataSet1.target = iris_loader.load() # numeric
 
 
     ### Split numeric datasets into nominal datasets ###
     ### Useful for the ID3 algorithm ###
-    dataSet1.data = nominalize(dataSet1.data)
+    #dataSet1.data = nominalize(dataSet1.data)
 
     ###########################################
     ###   End the data picking section   ###
