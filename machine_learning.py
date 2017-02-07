@@ -1,8 +1,10 @@
 # Created by Matt Wyndham
 from random import shuffle
+from random import uniform
 import iris_loader
 import lenses_loader
 import vote_loader
+import diabetes_loader
 import math
 
 # only use for numeric data
@@ -30,6 +32,26 @@ def nominalize(data):
                 row[attribute] = 3
     return data
 
+# use to make numeric data range from 0 to 1 instead of it's current range
+def normalize(data):
+    mins = []
+    maxes = []
+    # find the mins and maxes
+    for dataType in range(len(data[0])):
+        mins.append(data[0][dataType])
+        maxes.append(data[0][dataType])
+        for p in range(len(data)):
+            if data[p][dataType] < mins[dataType]:
+                mins[dataType] = data[p][dataType]
+            if data[p][dataType] > maxes[dataType]:
+                maxes[dataType] = data[p][dataType]
+    for p in range(len(data)):
+        for set in range(len(data[p])):
+            old = data[p][set]
+            data[p][set] = (old - mins[set]) / (maxes[set] - mins[set])
+
+    return data
+
 # this is where the actual machine learning algorithms are stored
 def learn(should_i_print=True):
     class dataSet:
@@ -46,7 +68,7 @@ def learn(should_i_print=True):
 
 
     ## Votes ##
-    dataSet1.data, dataSet1.target = vote_loader.load() # nominal
+    #dataSet1.data, dataSet1.target = vote_loader.load() # nominal
 
     ## Lenses ##
     #dataSet1.data, dataSet1.target = lenses_loader.load() # nominal
@@ -58,10 +80,15 @@ def learn(should_i_print=True):
     ## Iris ##
     #dataSet1.data, dataSet1.target = iris_loader.load() # numeric
 
+    ## Diabetes ##
+    dataSet1.data, dataSet1.target = diabetes_loader.load()
 
     ### Split numeric datasets into nominal datasets ###
     ### Useful for the ID3 algorithm ###
     #dataSet1.data = nominalize(dataSet1.data)
+
+    ### Normalize the data (i.e. make it range from 0 to 1) ###
+    dataSet1.data = normalize(dataSet1.data)
 
     ###########################################
     ###   End the data picking section   ###
@@ -123,19 +150,6 @@ def learn(should_i_print=True):
         def fit(self, t_data, t_targets):
             self.target = t_targets
             self.data = t_data
-            # normalize
-            for dataType in range(len(t_data[0])):
-                self.mins.append(t_data[0][dataType])
-                self.maxes.append(t_data[0][dataType])
-                for p in range(len(t_data)):
-                    if t_data[p][dataType] < self.mins[dataType]:
-                        self.mins[dataType] = t_data[p][dataType]
-                    if t_data[p][dataType] > self.maxes[dataType]:
-                        self.maxes[dataType] = t_data[p][dataType]
-            for p in range(len(t_data)):
-                for set in range(len(t_data[p])):
-                    old = t_data[p][set]
-                    t_data[p][set] = (old - self.mins[set]) / (self.maxes[set] - self.mins[set])
 
         def predict(self, test_data, k=1):
             predictions = []
@@ -376,13 +390,103 @@ def learn(should_i_print=True):
             # return that target value
             return predictions
 
+    # Neural Network
+    class Neuron:
+        def __init__(self):
+            self.weights = []
+            self.threshold = 0
+
+        # get the results of an instance
+        def getOutput(self, inputs):
+            instance = 0
+            totalInput = 0
+            while instance < len(inputs):
+                totalInput += (inputs[instance] * self.weights[instance])
+                instance += 1
+            if totalInput > self.threshold:
+                return 1
+            else:
+                return 0
+
+        # set up the weights at a small number
+        def setWeights(self, number_of_inputs):
+            for i in range(number_of_inputs):
+                self.weights.append(uniform(-0.5,0.5)) #TODO: truncate the floating point
+                while self.weights[i] == 0.0:
+                    self.weights[i] = (uniform(-1.0, 1.0))
+
+    class NeuralNet:
+        def __init__(self):
+            # there will always be one extra input for the bias node
+            self.number_of_inputs = 1
+            self.nodes = []
+            self.different_targets = []
+
+        def fit(self, training_data, training_target):
+            self.data = training_data
+            self.targets = training_target
+
+            # find out the number of inputs
+            for attribute in self.data[0]:
+                self.number_of_inputs += 1
+
+            # find out different targets
+            # (this number will probably be smaller than the number of inputs)
+            not_seen = True
+            for instance in training_target:
+                # search through all the targets you've seen
+                for target in self.different_targets:
+                    if target == instance:
+                        not_seen = False
+                        break
+                # if you still haven't seen the target, add it!
+                if not_seen == True:
+                    self.different_targets.append(instance)
+                else: # set up for the next run
+                    not_seen = True
+            # sort the list for convenience
+            self.different_targets.sort()
+
+            # create nodes for each target
+            for item in range(len(self.different_targets)):
+                newNode = Neuron()
+                newNode.setWeights(self.number_of_inputs)
+                self.nodes.append(newNode)
+
+            # when you train the nodes, make sure the first input is -1
+            # TODO: actually train the system
+            return
+
+        def predict(self, test_data):
+            predictions = []
+            for instance in test_data:
+                current_input = [-1] # the bias node
+                for i in instance: # add the rest of the inputs
+                    current_input.append(i)
+                results = []
+                # read out what each node says
+                for node in self.nodes:
+                    results.append(node.getOutput(current_input))
+                # the first node that is 1 (fired) gets predicted
+                # there are only nodes for each target. no more
+                nothing_fired = True
+                for item in range(len(results)):
+                    if results[item] == 1:
+                        predictions.append(self.different_targets[item])
+                        nothing_fired = False
+                        break
+                if nothing_fired == True:
+                    predictions.append(self.different_targets[0])
+            return predictions
+
     ##############################
     # choose your algorithm here #
     ##############################
     #GLADos = HardCoded()
     #GLADos = WyndhammerKNN()
-    GLADos = ID3Tree()
+    #GLADos = ID3Tree()
     #GLADos = NaiveBayes() # DOES NOTHING #
+    GLADos = NeuralNet()
 
     ## now the program checks things for you ##
     GLADos.fit(training_data, training_target)
@@ -411,5 +515,5 @@ if __name__ == '__main__':
         average_accuracy += learn()
         attempts += 1
         print()
-    print()
+    print("Total Average:")
     print(average_accuracy / attempts)

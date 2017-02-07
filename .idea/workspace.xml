@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5ff8fb5-0b72-409c-9dec-b3e66209b204" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../machine_learning/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../machine_learning/machine_learning.py" afterPath="$PROJECT_DIR$/../machine_learning/machine_learning.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diabetes_loader.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.cost" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.delay" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.expense" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.group" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/pima-indians-diabetes.data" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pima_diabetes/pima-indians-diabetes.names" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/machine_learning.py" afterPath="$PROJECT_DIR$/machine_learning.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,13 +21,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/machine_learning$lenses_loader.coverage" NAME="lenses_loader Coverage Results" MODIFIED="1485920897083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../machine_learning" />
+    <SUITE FILE_PATH="coverage/machine_learning$lenses_loader.coverage" NAME="lenses_loader Coverage Results" MODIFIED="1485920897083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/week01$Iris_Detector.coverage" NAME="Iris Detector Coverage Results" MODIFIED="1485403113867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/week01$lenses_loader.coverage" NAME="lenses_loader Coverage Results" MODIFIED="1485408666365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/week01$machine_learning.coverage" NAME="machine_learning Coverage Results" MODIFIED="1485819621695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/machine_learning$vote_loader.coverage" NAME="vote_loader Coverage Results" MODIFIED="1485920371008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../machine_learning" />
+    <SUITE FILE_PATH="coverage/machine_learning$vote_loader.coverage" NAME="vote_loader Coverage Results" MODIFIED="1485920371008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/week01$dataLoader.coverage" NAME="dataLoader Coverage Results" MODIFIED="1484796967580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/machine_learning$machine_learning.coverage" NAME="machine_learning Coverage Results" MODIFIED="1485922952236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../machine_learning" />
+    <SUITE FILE_PATH="coverage/machine_learning$diabetes_loader.coverage" NAME="diabetes_loader Coverage Results" MODIFIED="1486441071123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/machine_learning$machine_learning.coverage" NAME="machine_learning Coverage Results" MODIFIED="1486441136117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -28,39 +37,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="machine_learning.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+        <entry file="file://$PROJECT_DIR$/machine_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="456" column="45" lean-forward="false" selection-start-line="456" selection-start-column="45" selection-end-line="456" selection-end-column="45" />
               <folding>
                 <element signature="e#26#52#0" expanded="true" />
-                <element signature="e#179#1082#0" expanded="false" />
-                <element signature="e#2877#3197#0" expanded="false" />
-                <element signature="e#6190#6280#0" expanded="false" />
-                <element signature="e#6345#12140#0" expanded="false" />
-                <element signature="e#12208#13582#0" expanded="false" />
-                <element signature="e#13702#14121#0" expanded="false" />
-                <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+                <element signature="e#229#1132#0" expanded="false" />
+                <element signature="e#1234#1840#0" expanded="false" />
+                <element signature="e#3825#4145#0" expanded="false" />
+                <element signature="e#4180#6176#0" expanded="false" />
+                <element signature="e#6414#6504#0" expanded="false" />
+                <element signature="e#6569#12364#0" expanded="false" />
+                <element signature="e#12432#13806#0" expanded="false" />
+                <element signature="e#13926#14345#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vote_loader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../machine_learning/vote_loader.py">
+      <file leaf-file-name="pima-indians-diabetes.data" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pima_diabetes/pima-indians-diabetes.data">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="88" lean-forward="false" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
+            <state relative-caret-position="0">
+              <caret line="0" column="29" lean-forward="true" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="house-votes-84.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../machine_learning/votes/house-votes-84.data">
+      <file leaf-file-name="diabetes_loader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diabetes_loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4896">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
+            <state relative-caret-position="204">
+              <caret line="16" column="64" lean-forward="false" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -77,7 +87,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../machine_learning" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="FORCE_PUSH_ALLOWED" value="true" />
   </component>
   <component name="IdeDocumentHistory">
@@ -91,12 +101,13 @@
         <option value="$PROJECT_DIR$/Iris Detector.py" />
         <option value="$PROJECT_DIR$/lenses_loader.py" />
         <option value="$PROJECT_DIR$/entropy.py" />
+        <option value="$PROJECT_DIR$/lenses_loader.py" />
+        <option value="$PROJECT_DIR$/id3_iris_loader.py" />
+        <option value="$PROJECT_DIR$/iris_loader.py" />
+        <option value="$PROJECT_DIR$/vote_loader.py" />
+        <option value="$PROJECT_DIR$/diabetes_loader.py" />
         <option value="$PROJECT_DIR$/machine_learning.py" />
-        <option value="$PROJECT_DIR$/../machine_learning/lenses_loader.py" />
-        <option value="$PROJECT_DIR$/../machine_learning/id3_iris_loader.py" />
-        <option value="$PROJECT_DIR$/../machine_learning/iris_loader.py" />
-        <option value="$PROJECT_DIR$/../machine_learning/vote_loader.py" />
-        <option value="$PROJECT_DIR$/../machine_learning/machine_learning.py" />
+        <option value="$PROJECT_DIR$/machine_learning.py" />
       </list>
     </option>
   </component>
@@ -131,6 +142,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,16 +155,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="machine_learning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="machine_learning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pima_diabetes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../machine_learning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python.machine_learning">
     <configuration default="false" name="iris_loader" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -162,13 +187,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../machine_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="machine_learning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../machine_learning/iris_loader.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/iris_loader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -180,13 +205,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../machine_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="machine_learning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../machine_learning/machine_learning.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/machine_learning.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -198,13 +223,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../machine_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="machine_learning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../machine_learning/vote_loader.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vote_loader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -216,13 +241,31 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../machine_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="machine_learning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../machine_learning/lenses_loader.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lenses_loader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="diabetes_loader" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="machine_learning" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/diabetes_loader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -441,18 +484,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.iris_loader" />
       <item index="1" class="java.lang.String" itemvalue="Python.machine_learning" />
       <item index="2" class="java.lang.String" itemvalue="Python.vote_loader" />
       <item index="3" class="java.lang.String" itemvalue="Python.lenses_loader" />
+      <item index="4" class="java.lang.String" itemvalue="Python.diabetes_loader" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.machine_learning" />
-        <item index="1" class="java.lang.String" itemvalue="Python.lenses_loader" />
-        <item index="2" class="java.lang.String" itemvalue="Python.vote_loader" />
-        <item index="3" class="java.lang.String" itemvalue="Python.iris_loader" />
+        <item index="1" class="java.lang.String" itemvalue="Python.diabetes_loader" />
+        <item index="2" class="java.lang.String" itemvalue="Python.lenses_loader" />
+        <item index="3" class="java.lang.String" itemvalue="Python.vote_loader" />
+        <item index="4" class="java.lang.String" itemvalue="Python.iris_loader" />
       </list>
     </recent_temporary>
   </component>
@@ -617,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485922140300</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="ran some tests">
+      <created>1485928396290</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1485928396290</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -628,20 +680,20 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39906833" sideWeight="0.50300753" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36335403" sideWeight="0.49699247" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36335403" sideWeight="0.49699247" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -667,7 +719,8 @@
     <MESSAGE value="got pretty far on the id3 stuff, maybe painted myself in a corner" />
     <MESSAGE value="finished the ID3 algorithm!" />
     <MESSAGE value="setup a different filename" />
-    <option name="LAST_COMMIT_MESSAGE" value="setup a different filename" />
+    <MESSAGE value="ran some tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="ran some tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,128 +731,194 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses_loader.py">
+    <entry file="file://$PROJECT_DIR$/vote_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="88" lean-forward="false" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/votes/house-votes-84.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#52#0" expanded="true" />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vote_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="88" lean-forward="false" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/votes/house-votes-84.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#52#0" expanded="true" />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lenses_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses/lenses.data">
+    <entry file="file://$PROJECT_DIR$/lenses/lenses.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses_loader.py">
+    <entry file="file://$PROJECT_DIR$/lenses_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses/lenses.data">
+    <entry file="file://$PROJECT_DIR$/lenses/lenses.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses_loader.py">
+    <entry file="file://$PROJECT_DIR$/lenses_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses/lenses.data">
+    <entry file="file://$PROJECT_DIR$/lenses/lenses.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/iris_loader.py">
+    <entry file="file://$PROJECT_DIR$/iris_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
@@ -807,24 +926,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iris.data" />
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/iris_loader.py">
+    <entry file="file://$PROJECT_DIR$/iris_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
@@ -832,53 +952,56 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iris.data" />
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -898,19 +1021,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iris.data" />
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -919,7 +1043,22 @@
     <entry file="file://$PROJECT_DIR$/HardCoded.py" />
     <entry file="file://$PROJECT_DIR$/decision_tree.py" />
     <entry file="file://$PROJECT_DIR$/entropy.py" />
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses/lenses.data">
+    <entry file="file://$PROJECT_DIR$/lenses/lenses.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/id3_iris_loader.py" />
+    <entry file="file://$PROJECT_DIR$/lenses_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iris/iris.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -927,39 +1066,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/id3_iris_loader.py">
+    <entry file="file://$PROJECT_DIR$/pima_diabetes/costs/pima-indians-diabetes.README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="-136">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/lenses_loader.py">
+    <entry file="file://$PROJECT_DIR$/pima_diabetes/pima-indians-diabetes.names">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/votes/house-votes-84.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/iris_loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/votes/house-votes-84.data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4896">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/vote_loader.py">
+    <entry file="file://$PROJECT_DIR$/vote_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="88" lean-forward="false" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
@@ -967,19 +1098,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../machine_learning/machine_learning.py">
+    <entry file="file://$PROJECT_DIR$/iris_loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pima_diabetes/pima-indians-diabetes.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="29" lean-forward="true" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diabetes_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="64" lean-forward="false" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/machine_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="456" column="45" lean-forward="false" selection-start-line="456" selection-start-column="45" selection-end-line="456" selection-end-column="45" />
           <folding>
             <element signature="e#26#52#0" expanded="true" />
-            <element signature="e#179#1082#0" expanded="false" />
-            <element signature="e#2877#3197#0" expanded="false" />
-            <element signature="e#6190#6280#0" expanded="false" />
-            <element signature="e#6345#12140#0" expanded="false" />
-            <element signature="e#12208#13582#0" expanded="false" />
-            <element signature="e#13702#14121#0" expanded="false" />
-            <marker date="1485922950046" expanded="false" signature="3223:5946" ph="..." />
+            <element signature="e#229#1132#0" expanded="false" />
+            <element signature="e#1234#1840#0" expanded="false" />
+            <element signature="e#3825#4145#0" expanded="false" />
+            <element signature="e#4180#6176#0" expanded="false" />
+            <element signature="e#6414#6504#0" expanded="false" />
+            <element signature="e#6569#12364#0" expanded="false" />
+            <element signature="e#12432#13806#0" expanded="false" />
+            <element signature="e#13926#14345#0" expanded="false" />
           </folding>
         </state>
       </provider>
