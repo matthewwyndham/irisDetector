@@ -62,6 +62,7 @@ def learn(should_i_print=True):
 
     #########################################################
     ###   This is where you pick the data you will load   ###
+    ###   TODO: Make the machine pick the data
     #########################################################
 
     ### Nominal Datasets ###
@@ -421,6 +422,7 @@ def learn(should_i_print=True):
             self.number_of_inputs = 1
             self.nodes = []
             self.different_targets = []
+            self.layers = []
 
         def fit(self, training_data, training_target):
             self.data = training_data
@@ -447,14 +449,26 @@ def learn(should_i_print=True):
             # sort the list for convenience
             self.different_targets.sort()
 
-            # create nodes for each target
+            # TODO: create some hidden layers & append to self.layers
+
+            # create output nodes for each target
             for item in range(len(self.different_targets)):
                 newNode = Neuron()
                 newNode.setWeights(self.number_of_inputs)
                 self.nodes.append(newNode)
 
+            # TODO: append this to the end of the list
+
             # when you train the nodes, make sure the first input is -1
-            # TODO: actually train the system
+            # TODO: run through training data
+
+            # Part II
+            # TODO: calculate outputs of each node
+
+            # Part III
+            # TODO: calculate error of each node
+            # TODO: update weights based on error
+
             return
 
         def predict(self, test_data):
@@ -481,6 +495,8 @@ def learn(should_i_print=True):
 
     ##############################
     # choose your algorithm here #
+    # TODO: Make the machine pick the best algorithm
+    # TODO: Make the machine come up with new algorithms
     ##############################
     #GLADos = HardCoded()
     #GLADos = WyndhammerKNN()
