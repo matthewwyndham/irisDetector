@@ -79,10 +79,10 @@ def learn(should_i_print=True):
 
 
     ## Iris ##
-    #dataSet1.data, dataSet1.target = iris_loader.load() # numeric
+    dataSet1.data, dataSet1.target = iris_loader.load() # numeric
 
     ## Diabetes ##
-    dataSet1.data, dataSet1.target = diabetes_loader.load()
+    #dataSet1.data, dataSet1.target = diabetes_loader.load()
 
     ### Split numeric datasets into nominal datasets ###
     ### Useful for the ID3 algorithm ###
@@ -433,6 +433,7 @@ def learn(should_i_print=True):
 
                 for node in range(self.number_of_inputs): # this needs to be set for each layer
                     new_output += iOutputs[node].getOutputF() * self.weights[node]
+                    # The SIGMOID function!
                     new_output = 1 / (1 + math.e**(-new_output))
                 self.output = new_output
                 return
