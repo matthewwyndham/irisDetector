@@ -392,6 +392,8 @@ def learn(should_i_print=True):
             return predictions
 
     # Neural Network
+    # Probably the most complicated one yet!
+    # Only slightly more difficult than the ID3Tree though, and much easier to wrap my mind around #pun
     class Neuron:
         def __init__(self):
             self.weights = []
@@ -426,7 +428,9 @@ def learn(should_i_print=True):
         # based on the input calculate the output
         def flowForward(self, iOutputs):
             if self.weights_are_set:
-                new_output = (-1 * self.bias_weight) # handle the bias
+                # BIAS
+                new_output = (-1 * self.bias_weight) # handle the bias of each node
+
                 for node in range(self.number_of_inputs): # this needs to be set for each layer
                     new_output += iOutputs[node].getOutputF() * self.weights[node]
                     new_output = 1 / (1 + math.e**(-new_output))
@@ -470,6 +474,7 @@ def learn(should_i_print=True):
             self.hidden_layers = hl - 1 # sloppy variable: User wants 2 layers, 1 hidden, 1 output
             # we always make 1 output layer, so hidden layers minus 1.
             # hopefully they never put in 0 or less than zero...
+            # oh and user is GLADos, so she'll have to be changed to actually pass in parameters.
 
             # find out the number of inputs
             for attribute in self.data[0]:
@@ -556,12 +561,14 @@ def learn(should_i_print=True):
             predictions = []
             for instance in test_data:
                 results = []
+
                 # input nodes
                 inputLayer = []
                 for i in range(len(instance)):
                     newInputNeuron = Neuron()
                     newInputNeuron.output = instance[i]
                     inputLayer.append(newInputNeuron)
+
                 # propagate the values
                 first_layer = True
                 for layer in range(len(self.layers)):
@@ -585,6 +592,8 @@ def learn(should_i_print=True):
                         highest_value = results[item]
                         value_location = item
                 predictions.append(self.different_targets[value_location]) # get the matching target
+
+            # done and done!
             return predictions
 
     ##############################
@@ -596,7 +605,8 @@ def learn(should_i_print=True):
     #GLADos = WyndhammerKNN()
     #GLADos = ID3Tree()
     #GLADos = NaiveBayes() # DOES NOTHING #
-    GLADos = NeuralNet()
+    GLADos = NeuralNet() # add extra parameters below to change the number of nodes.
+    # for example: GLADos.fit(training_data, training_target, 8, 10) 8 nodes per layer, 10 layers
 
     ## now the program checks things for you ##
     GLADos.fit(training_data, training_target)
