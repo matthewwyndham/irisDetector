@@ -396,8 +396,14 @@ def learn(should_i_print=True):
         def __init__(self):
             self.weights = []
             self.threshold = 0
+            self.error = None
+            self.output = None
+            self.number_of_inputs = 0
+            self.bias_weight = -0.31415 # why not? pi/10
+            self.weights_are_set = False
 
         # get the results of an instance
+        # outdated, this is for single layer perceptrons
         def getOutput(self, inputs):
             instance = 0
             totalInput = 0
@@ -409,24 +415,61 @@ def learn(should_i_print=True):
             else:
                 return 0
 
-        # set up the weights at a small number
-        def setWeights(self, number_of_inputs):
-            for i in range(number_of_inputs):
-                self.weights.append(uniform(-0.5,0.5)) #TODO: truncate the floating point
-                while self.weights[i] == 0.0:
-                    self.weights[i] = (uniform(-1.0, 1.0))
+        # returns the floating point value
+        def getOutputF(self):
+            return self.output
+
+        # get the error of the node
+        def getError(self):
+            return self.error
+
+        # based on the input calculate the output
+        def flowForward(self, iOutputs):
+            if self.weights_are_set:
+                new_output = (-1 * self.bias_weight) # handle the bias
+                for node in range(self.number_of_inputs): # this needs to be set for each layer
+                    new_output += iOutputs[node].getOutputF() * self.weights[node]
+                    new_output = 1 / (1 + math.e**(-new_output))
+                self.output = new_output
+                return
+            else:
+                self.setWeights(iOutputs)
+                self.flowForward(iOutputs)
+
+        # based on error of k, change weight between i and this
+        def backPropegate(self, iOutputs, kErrors):
+            # handle the bias node
+            pass
+
+        # set up the weights at a small number for each input
+        def setWeights(self, iOutputs):
+            self.number_of_inputs = len(iOutputs)
+            for i in range(self.number_of_inputs):
+                self.weights.append(uniform(-0.5,0.5))
+            self.weights_are_set = True
 
     class NeuralNet:
         def __init__(self):
-            # there will always be one extra input for the bias node
-            self.number_of_inputs = 1
+            self.number_of_inputs = 0
             self.nodes = []
             self.different_targets = []
+            # Multi-Layer Perceptron
+            # keep track of all the nodes
             self.layers = []
+            self.nodes_in_layer = []
+            self.number_of_layers = 0
+            # tells me when to stop training
+            self.epoch_training_limit = 200
+            self.epoch = 0
 
-        def fit(self, training_data, training_target):
+        def fit(self, training_data, training_target, npl = 4, hl = 2):
             self.data = training_data
             self.targets = training_target
+            # can change if want
+            self.neurons_per_layer = npl
+            self.hidden_layers = hl - 1 # sloppy variable: User wants 2 layers, 1 hidden, 1 output
+            # we always make 1 output layer, so hidden layers minus 1.
+            # hopefully they never put in 0 or less than zero...
 
             # find out the number of inputs
             for attribute in self.data[0]:
@@ -449,21 +492,59 @@ def learn(should_i_print=True):
             # sort the list for convenience
             self.different_targets.sort()
 
-            # TODO: create some hidden layers & append to self.layers
+            # create some hidden layers & append to self.layers
+            # input nodes
+            inputLayer = []
+            for i in range(len(self.data[0])):
+                newInputNeuron = Neuron()
+                newInputNeuron.output = self.data[0][i]
+                inputLayer.append(newInputNeuron)
 
-            # create output nodes for each target
-            for item in range(len(self.different_targets)):
-                newNode = Neuron()
-                newNode.setWeights(self.number_of_inputs)
-                self.nodes.append(newNode)
+            # create the hidden layers
+            firstLayer = True
+            numNodes_thisLayer = 0
+            for number in range(self.hidden_layers):
+                if firstLayer:
+                    firstLayer = False
+                    nodelist = []
+                    for node in range(self.neurons_per_layer):
+                        nextNeuron = Neuron()
+                        # set up the weights!
+                        # and the output
+                        nextNeuron.flowForward(inputLayer) # pass in the previous layer of nodes
+                        nodelist.append(nextNeuron)
+                        numNodes_thisLayer += 1
+                    self.layers.append(nodelist)
+                    self.nodes_in_layer.append(numNodes_thisLayer)
+                    numNodes_thisLayer = 0
+                else:
+                    nodelist = []
+                    for node in range(self.neurons_per_layer):
+                        nextNeuron = Neuron()
+                        # set up the weights!
+                        # and the output
+                        nextNeuron.flowForward(self.layers[number]) # pass in the previous layer of nodes
+                        nodelist.append(nextNeuron)
+                        numNodes_thisLayer += 1
+                    self.layers.append(nodelist)
+                    self.nodes_in_layer.append(numNodes_thisLayer)
+                    numNodes_thisLayer = 0
 
-            # TODO: append this to the end of the list
+            self.number_of_layers = self.hidden_layers # probably unnecessary?
 
-            # when you train the nodes, make sure the first input is -1
-            # TODO: run through training data
-
-            # Part II
-            # TODO: calculate outputs of each node
+            # create the output layer
+            nodelist = []
+            numNodes_thisLayer = 0
+            for value in range(len(self.different_targets)):
+                nextNeuron = Neuron()
+                # set up the weights!
+                # and the output
+                nextNeuron.flowForward(self.layers[len(self.layers) - 1])  # pass in the previous layer of nodes
+                nodelist.append(nextNeuron)
+                numNodes_thisLayer += 1
+            self.layers.append(nodelist)
+            self.nodes_in_layer.append(numNodes_thisLayer)
+            self.number_of_layers += 1
 
             # Part III
             # TODO: calculate error of each node
@@ -474,23 +555,36 @@ def learn(should_i_print=True):
         def predict(self, test_data):
             predictions = []
             for instance in test_data:
-                current_input = [-1] # the bias node
-                for i in instance: # add the rest of the inputs
-                    current_input.append(i)
                 results = []
-                # read out what each node says
-                for node in self.nodes:
-                    results.append(node.getOutput(current_input))
-                # the first node that is 1 (fired) gets predicted
-                # there are only nodes for each target. no more
-                nothing_fired = True
+                # input nodes
+                inputLayer = []
+                for i in range(len(instance)):
+                    newInputNeuron = Neuron()
+                    newInputNeuron.output = instance[i]
+                    inputLayer.append(newInputNeuron)
+                # propagate the values
+                first_layer = True
+                for layer in range(len(self.layers)):
+                    if first_layer: # first layer gets the inputs
+                        first_layer = False
+                        for node in range(len(self.layers[layer])):
+                            self.layers[layer][node].flowForward(inputLayer)
+                    elif layer is not len(self.layers): # next layers just reflow
+                        for node in range(len(self.layers[layer])):
+                            self.layers[layer][node].flowForward(self.layers[layer - 1])
+                    else: # final layer should give us the outputs
+                        for node in range(len(self.layers[layer])):
+                            self.layers[layer][node].flowForward(self.layers[layer - 1])
+                            results.append(self.layers[layer][node].getOutputF())
+
+                # find the highest node in the values
+                highest_value = 0 # the sigmoid function will always be greater than zero!
+                value_location = -1
                 for item in range(len(results)):
-                    if results[item] == 1:
-                        predictions.append(self.different_targets[item])
-                        nothing_fired = False
-                        break
-                if nothing_fired == True:
-                    predictions.append(self.different_targets[0])
+                    if results[item] > highest_value:
+                        highest_value = results[item]
+                        value_location = item
+                predictions.append(self.different_targets[value_location]) # get the matching target
             return predictions
 
     ##############################
