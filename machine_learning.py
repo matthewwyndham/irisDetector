@@ -79,10 +79,10 @@ def learn(should_i_print=True):
 
 
     ## Iris ##
-    dataSet1.data, dataSet1.target = iris_loader.load() # numeric
+    #dataSet1.data, dataSet1.target = iris_loader.load() # numeric
 
     ## Diabetes ##
-    #dataSet1.data, dataSet1.target = diabetes_loader.load()
+    dataSet1.data, dataSet1.target = diabetes_loader.load()
 
     ### Split numeric datasets into nominal datasets ###
     ### Useful for the ID3 algorithm ###
@@ -401,29 +401,12 @@ def learn(should_i_print=True):
             self.error = None
             self.output = None
             self.number_of_inputs = 0
-            self.bias_weight = -0.31415 # why not? pi/10
+            self.bias_weight = -0.31415 # why not? -pi/10
             self.weights_are_set = False
 
-        # get the results of an instance
-        # outdated, this is for single layer perceptrons
-        def getOutput(self, inputs):
-            instance = 0
-            totalInput = 0
-            while instance < len(inputs):
-                totalInput += (inputs[instance] * self.weights[instance])
-                instance += 1
-            if totalInput > self.threshold:
-                return 1
-            else:
-                return 0
+            self.position_in_layer = 0
 
-        # returns the floating point value
-        def getOutputF(self):
-            return self.output
-
-        # get the error of the node
-        def getError(self):
-            return self.error
+            self.learning_rate = 0.2
 
         # based on the input calculate the output
         def flowForward(self, iOutputs):
@@ -432,19 +415,29 @@ def learn(should_i_print=True):
                 new_output = (-1 * self.bias_weight) # handle the bias of each node
 
                 for node in range(self.number_of_inputs): # this needs to be set for each layer
-                    new_output += iOutputs[node].getOutputF() * self.weights[node]
+                    new_output += iOutputs[node].output * self.weights[node]
                     # The SIGMOID function!
-                    new_output = 1 / (1 + math.e**(-new_output))
+                new_output = 1 / (1 + math.e**(-new_output))
                 self.output = new_output
                 return
             else:
                 self.setWeights(iOutputs)
                 self.flowForward(iOutputs)
 
-        # based on error of k, change weight between i and this
-        def backPropegate(self, iOutputs, kErrors):
-            # handle the bias node
-            pass
+        # based on error of k, change weight between i and this (j)
+        def backPropegate(self, kNodes):
+            # do not worry about the bias node!
+            weighted_errors = 0
+            for node in range(len(kNodes)):
+                weighted_errors += kNodes[node].weights[self.position_in_layer] * kNodes[node].error
+            self.error = self.output * (1 - self.output) * (weighted_errors)
+
+        def updateWeights(self, iNodes):
+            # bias
+            self.bias_weight -= self.learning_rate * self.error * -1
+            # the rest
+            for node in range(len(iNodes)):
+                self.weights[node] -= self.learning_rate * self.error * iNodes[node].output
 
         # set up the weights at a small number for each input
         def setWeights(self, iOutputs):
@@ -458,19 +451,34 @@ def learn(should_i_print=True):
             self.number_of_inputs = 0
             self.nodes = []
             self.different_targets = []
+
             # Multi-Layer Perceptron
             # keep track of all the nodes
             self.layers = []
             self.nodes_in_layer = []
             self.number_of_layers = 0
+
             # tells me when to stop training
-            self.epoch_training_limit = 200
+            self.epoch_training_limit = 100
             self.epoch = 0
 
         def fit(self, training_data, training_target, npl = 4, hl = 2):
-            self.data = training_data
-            self.targets = training_target
-            # can change if want
+            # get validation data
+            self.validation_data = []
+            self.validation_targets = []
+            # out of the training data
+            self.data = []
+            self.targets = []
+
+            number_of_instances = len(training_target)
+            for i in range(number_of_instances):
+                if i < number_of_instances * .7:
+                    self.data.append(training_data[i])
+                    self.targets.append(training_target[i])
+                else:
+                    self.validation_data.append(training_data[i])
+                    self.validation_targets.append(training_target[i])
+
             self.neurons_per_layer = npl
             self.hidden_layers = hl - 1 # sloppy variable: User wants 2 layers, 1 hidden, 1 output
             # we always make 1 output layer, so hidden layers minus 1.
@@ -484,14 +492,14 @@ def learn(should_i_print=True):
             # find out different targets
             # (this number will probably be smaller than the number of inputs)
             not_seen = True
-            for instance in training_target:
+            for instance in self.targets:
                 # search through all the targets you've seen
                 for target in self.different_targets:
                     if target == instance:
                         not_seen = False
                         break
                 # if you still haven't seen the target, add it!
-                if not_seen == True:
+                if not_seen:
                     self.different_targets.append(instance)
                 else: # set up for the next run
                     not_seen = True
@@ -518,6 +526,7 @@ def learn(should_i_print=True):
                         # set up the weights!
                         # and the output
                         nextNeuron.flowForward(inputLayer) # pass in the previous layer of nodes
+                        nextNeuron.position_in_layer = numNodes_thisLayer
                         nodelist.append(nextNeuron)
                         numNodes_thisLayer += 1
                     self.layers.append(nodelist)
@@ -529,7 +538,8 @@ def learn(should_i_print=True):
                         nextNeuron = Neuron()
                         # set up the weights!
                         # and the output
-                        nextNeuron.flowForward(self.layers[number]) # pass in the previous layer of nodes
+                        nextNeuron.flowForward(self.layers[number - 1]) # pass in the previous layer of nodes
+                        nextNeuron.position_in_layer = numNodes_thisLayer
                         nodelist.append(nextNeuron)
                         numNodes_thisLayer += 1
                     self.layers.append(nodelist)
@@ -546,6 +556,7 @@ def learn(should_i_print=True):
                 # set up the weights!
                 # and the output
                 nextNeuron.flowForward(self.layers[len(self.layers) - 1])  # pass in the previous layer of nodes
+                nextNeuron.position_in_layer = numNodes_thisLayer
                 nodelist.append(nextNeuron)
                 numNodes_thisLayer += 1
             self.layers.append(nodelist)
@@ -553,9 +564,80 @@ def learn(should_i_print=True):
             self.number_of_layers += 1
 
             # Part III
-            # TODO: calculate error of each node
-            # TODO: update weights based on error
+            # accuracy over epochs
+            accuracy_per_epoch = []
+            # hard limit only train that many times
+            for current_epoch in range(self.epoch_training_limit):
+                # iterate through every data point
+                for counter in range(len(self.data)):
+                    # input nodes
+                    inputLayer = []
+                    for currentnode in range(len(self.data[counter])):
+                        newInputNeuron = Neuron()
+                        newInputNeuron.output = self.data[counter][currentnode]
+                        inputLayer.append(newInputNeuron)
 
+                    # run the input through the network
+                    for layer in range(len(self.layers)):
+                        if layer == 0:
+                            for node in self.layers[layer]:
+                                node.flowForward(inputLayer)
+                        else:
+                            for node in self.layers[layer]:
+                                node.flowForward(self.layers[layer - 1])
+
+                    # CALCULATE ERROR
+                    # find target value this should be 1
+                    target_node = 0
+                    for target in range(len(self.different_targets)):
+                        if self.targets[counter] == self.different_targets[target]:
+                            target_node = target
+
+                    # everything else is 0
+                    for layer in range(len(self.layers) - 1, -1, -1):
+                        if layer == len(self.layers) - 1:
+                            # calculate the final layer error
+                            for cnode in range(len(self.layers[layer])):
+                                current_node = self.layers[layer][cnode]
+                                actual_value = 0
+                                if cnode == target_node:
+                                    actual_value = 1
+                                current_node.error = current_node.output * (1 - current_node.output) * (current_node.output - actual_value)
+                                self.layers[layer][cnode].error = current_node.error # is this necessary?
+                                                                        # I don't know but it makes me feel safe
+                        else:
+                            # calculate the hidden layers
+                            for hnode in range(len(self.layers[layer])):
+                                self.layers[layer][hnode].backPropegate(self.layers[layer + 1])
+
+                    # UPDATE WEIGHTS
+                    for layer in range(len(self.layers)):
+                        if layer == 0:
+                            for node in range(len(self.layers[layer])):
+                                self.layers[layer][node].updateWeights(inputLayer)
+                        else:
+                            for node in range(len(self.layers[layer])):
+                                self.layers[layer][node].updateWeights(self.layers[layer - 1])
+
+                    # next instance in the training data
+
+                # now test against the validation data
+                predicted_targets = self.predict(self.validation_data)
+                correct_predictions = 0
+                for i in range(len(predicted_targets)):
+                    if predicted_targets[i] == self.validation_targets[i]:
+                        correct_predictions += 1
+                accuracy = (correct_predictions / len(test_target)) * 100
+                # add that to the list of accuracy
+                accuracy_per_epoch.append(accuracy)
+
+                # display a plot of the things
+
+                # increment the epoch counter
+            import matplotlib.pyplot as plt
+            plt.plot(accuracy_per_epoch)
+            plt.ylabel('Accuracy over time')
+            plt.show()
             return
 
         def predict(self, test_data):
@@ -577,13 +659,13 @@ def learn(should_i_print=True):
                         first_layer = False
                         for node in range(len(self.layers[layer])):
                             self.layers[layer][node].flowForward(inputLayer)
-                    elif layer is not len(self.layers): # next layers just reflow
+                    elif layer is not len(self.layers) - 1: # next layers just reflow
                         for node in range(len(self.layers[layer])):
                             self.layers[layer][node].flowForward(self.layers[layer - 1])
                     else: # final layer should give us the outputs
                         for node in range(len(self.layers[layer])):
                             self.layers[layer][node].flowForward(self.layers[layer - 1])
-                            results.append(self.layers[layer][node].getOutputF())
+                            results.append(self.layers[layer][node].output)
 
                 # find the highest node in the values
                 highest_value = 0 # the sigmoid function will always be greater than zero!
@@ -593,6 +675,7 @@ def learn(should_i_print=True):
                         highest_value = results[item]
                         value_location = item
                 predictions.append(self.different_targets[value_location]) # get the matching target
+
 
             # done and done!
             return predictions
@@ -610,7 +693,7 @@ def learn(should_i_print=True):
     # for example: GLADos.fit(training_data, training_target, 8, 10) 8 nodes per layer, 10 layers
 
     ## now the program checks things for you ##
-    GLADos.fit(training_data, training_target)
+    GLADos.fit(training_data, training_target, 5, 3)
     predicted_targets = GLADos.predict(test_data)
 
     # tell me your predictions!
@@ -632,7 +715,7 @@ if __name__ == '__main__':
     average_accuracy = 0
     attempts = 0
     for i in range(15):
-        print("Attempt: ", i,)
+        print("Attempt: ", i + 1,)
         average_accuracy += learn()
         attempts += 1
         print()
