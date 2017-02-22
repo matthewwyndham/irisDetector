@@ -79,10 +79,10 @@ def learn(should_i_print=True):
 
 
     ## Iris ##
-    #dataSet1.data, dataSet1.target = iris_loader.load() # numeric
+    dataSet1.data, dataSet1.target = iris_loader.load() # numeric
 
     ## Diabetes ##
-    dataSet1.data, dataSet1.target = diabetes_loader.load()
+    #dataSet1.data, dataSet1.target = diabetes_loader.load()
 
     ### Split numeric datasets into nominal datasets ###
     ### Useful for the ID3 algorithm ###
